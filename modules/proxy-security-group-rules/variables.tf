@@ -3,10 +3,12 @@
 ###############################################################################
 variable "allowed_ssh_cidr_blocks" {
   description = "The CIDR blocks allowed to SSH to the instance."
+  type        = "list"
 }
 
 variable "allowed_http_cidr_blocks" {
   description = "The CIDR blocks allowed to make HTTP connections."
+  type        = "list"
 }
 
 variable "security_group_id" {

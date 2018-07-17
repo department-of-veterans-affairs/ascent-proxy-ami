@@ -21,9 +21,11 @@ variable "san"{
 }
 variable "allowed_ssh_cidr_blocks" {
   description = "The CIDR blocks allowed SSH access to the instance"
+  type        = "list"
 }
 variable "allowed_http_cidr_blocks" {
   description = "The CIDR blocks allowed HTTP access to the instance"
+  type        = "list"
 }
 variable "server_name" {
   description = "The name of the virtual server on the proxy instance"
