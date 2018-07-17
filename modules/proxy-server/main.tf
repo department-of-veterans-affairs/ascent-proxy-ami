@@ -41,7 +41,7 @@ resource "aws_security_group" "proxy_security_group" {
 }
 
 module "security_group_rules" {
-  source = "../proxy_security_group_rules"
+  source = "../proxy-security-group-rules"
   security_group_id = "${aws_security_group.proxy_security_group.id}"
   allowed_ssh_cidr_blocks = ["${var.allowed_ssh_cidr_blocks}"]
   allowed_http_cidr_blocks = ["${var.allowed_http_cidr_blocks}"]
