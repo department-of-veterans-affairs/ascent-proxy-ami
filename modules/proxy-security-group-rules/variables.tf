@@ -9,6 +9,10 @@ variable "allowed_http_cidr_blocks" {
   description = "The CIDR blocks allowed to make HTTP connections."
 }
 
+variable "security_group_id" {
+  description = "The ID of the security group with which to associate the security group rules"
+}
+
 ###############################################################################
 # DEFAULT VARIABLES
 ###############################################################################
