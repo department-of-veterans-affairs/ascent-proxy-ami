@@ -9,4 +9,4 @@ sed -i 's|URL_TO_REDIRECT|${proxy_pass}|g' /home/ec2-user/default.conf
 sudo mv /home/ec2-user/default.conf /etc/nginx/conf.d/default.conf
 sudo chmod 755 /home/ec2-user/run-nginx.sh
 
-sudo /home/ec2-user/run-nginx.sh
+sudo nginx

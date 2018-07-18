@@ -29,11 +29,6 @@
   "provisioners": [
     {
       "type": "file",
-      "source": "run-nginx.sh",
-      "destination": "/home/ec2-user/run-nginx.sh"
-    },
-    {
-      "type": "file",
       "source": "default.conf",
       "destination": "/home/ec2-user/default.conf"
     },
