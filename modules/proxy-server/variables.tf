@@ -16,9 +16,7 @@ variable "vpc_id" {
 variable "instance_name" {
   description = "The name of the instance and other resources associated with it"
 }
-variable "san"{
-  description = "The SAN tag of the instance that the DNS server uses to create a DNS for the instance."
-}
+
 variable "allowed_ssh_cidr_blocks" {
   description = "The CIDR blocks allowed SSH access to the instance"
   type        = "list"
@@ -42,6 +40,11 @@ variable "proxy_pass" {
 ###############################################################################
 # DEFAULT VARIABLES
 ###############################################################################
+variable "tags" {
+  description = "Tags to apply to the EC2 instance. Name will be applied by default."
+  type        = "map"
+  default     = {}
+}
 variable "instance_type" {
   description = "The type of the EC2 instance (m4.large, t2.micro, etc)"
   default     = "t2.micro"
