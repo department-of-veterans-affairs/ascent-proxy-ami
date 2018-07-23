@@ -1,0 +1,42 @@
+{
+  "variables":{
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "aws_region": "us-gov-west-1"
+  },
+
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "{{user `aws_region`}}",
+      "source_ami_filter": { "filters": {"name": "ascent-base-*"}, "most_recent": true },
+      "instance_type": "t2.micro",
+      "vpc_id": "{{user `vpc_id`}}",
+      "subnet_id": "{{user `subnet_id`}}",
+      "ssh_username": "ec2-user",
+      "ami_name": "ascent-es-proxy {{timestamp}}",
+      "tags": {
+        "name": "ascent-es-proxy"
+      },
+      "snapshot_tags": {
+        "name": "ascent-es-proxy"
+      }
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "default.conf",
+      "destination": "/home/ec2-user/default.conf"
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "install-nginx.sh"
+      ]
+    }
+  ]
+}
