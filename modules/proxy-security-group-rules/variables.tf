@@ -19,9 +19,9 @@ variable "security_group_id" {
 # DEFAULT VARIABLES
 ###############################################################################
 
-variable "http_port" {
-  description = "The port for http protocols. Usually 80"
-  default = "80"
+variable "https_port" {
+  description = "The port for https protocols. Usually 443"
+  default = "443"
 }
 
 variable "ssh_port" {
