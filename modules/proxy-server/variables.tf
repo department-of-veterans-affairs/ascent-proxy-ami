@@ -34,8 +34,9 @@ variable "location" {
 variable "proxy_pass" {
   description = "The URL of the backend server to pass the proxy path to."
 }
-
-
+variable "vault_address" {
+  description = "The URL of the vault instance that will populate SSL certificates."
+}
 
 ###############################################################################
 # DEFAULT VARIABLES

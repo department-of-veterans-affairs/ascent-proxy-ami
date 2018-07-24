@@ -11,4 +11,7 @@ sudo yum -y install nginx
 
 sudo nginx
 
+# For SSL
+sudo mkdir /etc/nginx/certs
+
 curl -I 127.0.0.1
