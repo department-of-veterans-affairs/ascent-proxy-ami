@@ -4,13 +4,13 @@
 #
 ###############################################################################
 
-resource "aws_security_group_rule" "allow_proxy_http_inbound" {
-  count       = "${length(var.allowed_http_cidr_blocks) >= 1 ? 1 : 0}"
+resource "aws_security_group_rule" "allow_proxy_https_inbound" {
+  count       = "${length(var.allowed_https_cidr_blocks) >= 1 ? 1 : 0}"
   type        = "ingress"
   from_port   = "${var.https_port}"
   to_port     = "${var.https_port}"
   protocol    = "tcp"
-  cidr_blocks = ["${var.allowed_http_cidr_blocks}"]
+  cidr_blocks = ["${var.allowed_https_cidr_blocks}"]
 
   security_group_id = "${var.security_group_id}"
 }

@@ -21,8 +21,8 @@ variable "allowed_ssh_cidr_blocks" {
   description = "The CIDR blocks allowed SSH access to the instance"
   type        = "list"
 }
-variable "allowed_http_cidr_blocks" {
-  description = "The CIDR blocks allowed HTTP access to the instance"
+variable "allowed_https_cidr_blocks" {
+  description = "The CIDR blocks allowed HTTPS access to the instance"
   type        = "list"
 }
 variable "server_name" {

@@ -6,8 +6,8 @@ variable "allowed_ssh_cidr_blocks" {
   type        = "list"
 }
 
-variable "allowed_http_cidr_blocks" {
-  description = "The CIDR blocks allowed to make HTTP connections."
+variable "allowed_https_cidr_blocks" {
+  description = "The CIDR blocks allowed to make HTTPS connections."
   type        = "list"
 }
 
