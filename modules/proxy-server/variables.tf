@@ -38,14 +38,14 @@ variable "vault_address" {
   description = "The URL of the vault instance that will populate SSL certificates."
 }
 
+variable "vault_token" {
+  description = "The token to authenticate to vault."
+}
 
 ###############################################################################
 # DEFAULT VARIABLES
 ###############################################################################
-variable "vault_token" {
-  description = "The token to authenticate to vault. Read by default from ~/.vault-token"
-  default = "${file("~/.vault-token")}"
-}
+
 
 variable "tags" {
   description = "Tags to apply to the EC2 instance. Name will be applied by default."
