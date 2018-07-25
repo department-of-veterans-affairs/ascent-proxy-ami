@@ -9,7 +9,7 @@ sed -i 's|SERVER_NAME|${server_name}|g' /tmp/templates/ca.crt.tpl
 sed -i 's|SERVER_NAME|${server_name}|g' /tmp/templates/server.crt.tpl
 sed -i 's|SERVER_NAME|${server_name}|g' /tmp/templates/server.key.tpl
 
-consul-template -once -config="/tmp/templates/consul-template-config.hcl" -vault-addr=${vault_address}
+consul-template -once -config="/tmp/templates/consul-template-config.hcl" -vault-addr=${vault_address} -vault-token=${vault_token}
 
 sudo mv /home/ec2-user/default.conf /etc/nginx/conf.d/default.conf
 sudo chmod 755 /home/ec2-user/run-nginx.sh
