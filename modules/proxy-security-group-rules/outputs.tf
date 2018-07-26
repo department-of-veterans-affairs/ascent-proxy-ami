@@ -1,3 +1,3 @@
-output "https_port" {
-   value = "${var.https_port}"
+output "http_port" {
+   value = "${var.http_port}"
 }

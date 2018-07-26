@@ -6,8 +6,8 @@ variable "allowed_ssh_cidr_blocks" {
   type        = "list"
 }
 
-variable "allowed_https_cidr_blocks" {
-  description = "The CIDR blocks allowed to make HTTPS connections."
+variable "allowed_http_cidr_blocks" {
+  description = "The CIDR blocks allowed to make HTTP connections."
   type        = "list"
 }
 
@@ -19,8 +19,8 @@ variable "security_group_id" {
 # DEFAULT VARIABLES
 ###############################################################################
 
-variable "https_port" {
-  description = "The port for https protocols. Usually 443"
+variable "http_port" {
+  description = "The port for http protocols. Usually 443"
   default = "443"
 }
 
