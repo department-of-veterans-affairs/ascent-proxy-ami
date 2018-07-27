@@ -38,9 +38,6 @@ variable "vault_address" {
   description = "The URL of the vault instance that will populate SSL certificates."
 }
 
-variable "vault_token" {
-  description = "The token to authenticate to vault."
-}
 
 variable "iam_instance_profile_name" {
   description = "The name of the IAM instance profile to launch the instance under"

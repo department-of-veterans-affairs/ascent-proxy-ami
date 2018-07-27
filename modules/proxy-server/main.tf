@@ -56,6 +56,5 @@ data "template_file" "proxy_user_data" {
     location          = "${var.location}"
     proxy_pass        = "${var.proxy_pass}"
     vault_address     = "${var.vault_address}"
-    vault_token       = "${var.vault_token}"
   }
 }
