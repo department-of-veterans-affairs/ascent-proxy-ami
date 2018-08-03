@@ -34,12 +34,20 @@ variable "location" {
 variable "proxy_pass" {
   description = "The URL of the backend server to pass the proxy path to."
 }
+variable "vault_address" {
+  description = "The URL of the vault instance that will populate SSL certificates."
+}
 
 
+variable "iam_instance_profile_name" {
+  description = "The name of the IAM instance profile to launch the instance under"
+}
 
 ###############################################################################
 # DEFAULT VARIABLES
 ###############################################################################
+
+
 variable "tags" {
   description = "Tags to apply to the EC2 instance. Name will be applied by default."
   type        = "map"

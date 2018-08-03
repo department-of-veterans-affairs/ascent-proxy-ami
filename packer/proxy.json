@@ -33,8 +33,14 @@
       "destination": "/home/ec2-user/default.conf"
     },
     {
+      "type": "file",
+      "source": "templates",
+      "destination": "/tmp"
+    },
+    {
       "type": "shell",
       "scripts": [
+        "install-tools.sh",
         "install-nginx.sh"
       ]
     }
