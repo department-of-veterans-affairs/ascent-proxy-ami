@@ -44,6 +44,8 @@ To authenticate to the domain with a client certificate, you're going to need to
 chmod 755 make-pfx.sh
 ./make-pfx.sh [my fully qualified domain name of kibana]
 ```
+**Important:** The script will prompt you for a password. Make sure that you provide one, or you'll have trouble down the road when you're importing it into your system's keychain.
+
 The script will produce a .pfx file which you will need to load into you're system's keychain.
 
 *Note that these instructions are for a mac.*
