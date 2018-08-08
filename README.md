@@ -7,9 +7,9 @@ Includes all terraform modules and packer scripts to create an nginx proxy secur
 ---
 ## Developer Instructions
 To authenticate to the kibana proxy, you'll need the following:
-    - The fully qualified domain name (such as dev-kibana.internal.vetservices.gov)
-    - A signed certificate from the issuing certificate authority so that the kibana site will trust you.
-    - A trust certificate for of the Certificate Authority so you can trust the kibana site.
+- The fully qualified domain name (such as dev-kibana.internal.vetservices.gov)
+- A signed certificate from the issuing certificate authority so that the kibana site will trust you.
+- A trust certificate for of the Certificate Authority so you can trust the kibana site.
 #### The fully qualified domain name (fqdn)
 For the fqdn, you'll need to know the url of the kibana server. Pretty much whatever is between the 'https://' and the first '/' after that is your fqdn. You'll need this for generating your Certificate Signing Request.
 
