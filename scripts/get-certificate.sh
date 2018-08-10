@@ -15,9 +15,6 @@ organization=""
 organizationalunit=""
 email=""
 
-savedir="certs"
-mkdir $savedir
-
 #Optional
 password=dummypassword
 
@@ -63,49 +60,9 @@ then
     fi
 fi
 
-echo
-echo "Generating key request for $domain"
-echo
 
-#Generate a key
-openssl genrsa -des3 -passout pass:$password -out $savedir/$domain.key 2048 -noout
-
-#Remove passphrase from the key. Comment the line out to keep the passphrase
-echo
-echo "Removing passphrase from key"
-echo
-openssl rsa -in $savedir/$domain.key -passin pass:$password -out $savedir/$domain.key
-
-#Create the request
-echo
-echo "Creating CSR"
-echo "You will be prompted for a bunch of values. You're cool just to keep them blank and press Enter a bunch of times."
-openssl req -new -key $savedir/$domain.key -out $savedir/$domain.csr -passin pass:$password
-
-echo "---------------------------"
-echo "-----Below is your CSR-----"
-echo "---------------------------"
-echo
-cat $domain.csr
-
-echo
-echo "---------------------------"
-echo "-----Below is your Key-----"
-echo "---------------------------"
-echo
-cat $domain.key
-
-
-echo
-echo "---------------------------"
-echo "---- You will find them ---"
-echo "----  saved in current  ---"
-echo "----      directory     ---"
-echo "---------------------------"
-echo
-
-csr=$(cat $savedir/$domain.csr | awk '{printf "%s",$0} END {print ""}' | awk '{ sub(/BEGIN CERTIFICATE REQUEST-----/, "BEGIN CERTIFICATE REQUEST-----\\n"); print }' | awk '{ sub(/-----END/, "\\n-----END"); print }')
-echo "{ \"csr\" : \"$csr\", \"common_name\" : \"$commonname\"}" >> $savedir/payload.json
+csr=$(cat $domain.csr | awk '{printf "%s",$0} END {print ""}' | awk '{ sub(/BEGIN CERTIFICATE REQUEST-----/, "BEGIN CERTIFICATE REQUEST-----\\n"); print }' | awk '{ sub(/-----END/, "\\n-----END"); print }')
+echo "{ \"csr\" : \"$csr\", \"common_name\" : \"$commonname\"}" >> payload.json
 
 
 echo
@@ -122,7 +79,6 @@ echo
 echo "---------------------------"
 echo
 
-cd $savedir
 curl -k --header "X-Vault-Token: $vault_token" --request POST --data @payload.json $vault_url/v1/pki/sign/vetservices >> response.json
 
 cat response.json | jq '.data.certificate' | awk '{ gsub(/\"/, ""); print }' | awk '{ gsub(/\\n/, "\n"); print }' >> $domain.crt
@@ -143,17 +99,3 @@ echo "-----     CA cert     -----"
 echo "---------------------------"
 echo
 cat ca.crt
-
-echo
-echo "Creating the pfx file for the Keychain."
-echo "You will be prompted for an export password"
-echo
-openssl pkcs12 -export -out $domain.pfx -inkey $domain.key -in $domain.crt
-
-echo "All certs stored in $savedir"
-echo "Load the .pfx and ca.crt files into your system's keychain for authentication and trusting the domain, $domain"
-echo "Cleaning up the payload.json and response files..."
-rm payload.json
-rm response.json
-cd ..
-echo "Bye!"
